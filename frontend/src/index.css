@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 6 182 212;
+  }
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased selection:bg-cyan-100 selection:text-cyan-900;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+.premium-glow {
+  box-shadow: 0 0 40px -10px rgba(6, 182, 212, 0.2);
+}
+
+.floating-element {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
