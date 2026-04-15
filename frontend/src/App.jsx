@@ -38,6 +38,15 @@ const SentimentItem = ({ item, getSentimentConfig }) => {
   const [showToxic, setShowToxic] = useState(false);
   const isHidden = item.hidden; // Use the hidden flag from backend
 
+  // Generate random stats for realism
+  const [stats] = useState({
+    replies: Math.floor(Math.random() * 50) + 1,
+    reposts: Math.floor(Math.random() * 20),
+    likes: Math.floor(Math.random() * 500) + 5,
+    views: Math.floor(Math.random() * 5000) + 100,
+    time: Math.floor(Math.random() * 23) + 1
+  });
+
   if (isHidden && !showToxic) {
     return (
       <div className="p-5 rounded-2xl border border-slate-200 bg-slate-50 flex items-center justify-between group shadow-sm transition-all hover:shadow-md">
@@ -54,15 +63,6 @@ const SentimentItem = ({ item, getSentimentConfig }) => {
       </div>
     );
   }
-
-  // Generate random stats for realism
-  const [stats] = useState({
-    replies: Math.floor(Math.random() * 50) + 1,
-    reposts: Math.floor(Math.random() * 20),
-    likes: Math.floor(Math.random() * 500) + 5,
-    views: Math.floor(Math.random() * 5000) + 100,
-    time: Math.floor(Math.random() * 23) + 1
-  });
 
   return (
     <div className="relative p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:bg-slate-50 transition-colors animate-in slide-in-from-bottom-2">
@@ -583,39 +583,7 @@ function AppContent() {
                       </div>
                     )}
 
-                    {/* Actionable Recommendations */}
-                    {toxicAnalyticsData.recommendations.length > 0 && (
-                      <div className="p-8 bg-blue-50 rounded-2xl border border-blue-100">
-                        <div className="flex items-center gap-3 mb-6">
-                          <Zap className="text-blue-600" />
-                          <h4 className="text-lg font-black uppercase tracking-tighter text-blue-900">Actionable Recommendations</h4>
-                        </div>
-                        <div className="space-y-4">
-                          {toxicAnalyticsData.recommendations.map((rec, i) => {
-                            const priorityColors = {
-                              CRITICAL: 'bg-rose-500',
-                              HIGH: 'bg-orange-500',
-                              MEDIUM: 'bg-yellow-500',
-                              LOW: 'bg-emerald-500'
-                            };
-                            
-                            return (
-                              <div key={`${rec.category}-${i}`} className="p-4 bg-white rounded-xl border border-blue-100">
-                                <div className="flex items-start gap-4">
-                                  <span className={`px-3 py-1 rounded-lg text-[10px] font-black uppercase text-white ${priorityColors[rec.priority]}`}>
-                                    {rec.priority}
-                                  </span>
-                                  <div className="flex-1">
-                                    <div className="font-bold text-slate-900 mb-1">{rec.category} ({rec.count} cases)</div>
-                                    <div className="text-sm text-slate-600">{rec.action}</div>
-                                  </div>
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    )}
+                    {/* Actionable Recommendations removed based on user request */}
                   </div>
                 )}
                 </>
