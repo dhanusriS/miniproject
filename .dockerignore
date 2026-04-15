@@ -1,0 +1,12 @@
+node_modules
+npm-debug.log
+.git
+.gitignore
+README.md
+.env
+server.log
+frontend.log
+frontend_dev.log
+ml/twitter.csv
+ml/test_*.py
+ml/train_model.py
